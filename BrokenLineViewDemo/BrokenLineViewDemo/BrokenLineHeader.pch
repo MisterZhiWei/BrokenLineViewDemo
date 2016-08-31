@@ -1,0 +1,21 @@
+//
+//  BrokenLineHeader.pch
+//  BrokenLineViewDemo
+//
+//  Created by LiuZhiwei on 16/8/30.
+//  Copyright © 2016年 smartdot.mau. All rights reserved.
+//
+
+#ifndef BrokenLineHeader_pch
+#define BrokenLineHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#ifdef __OBJC__
+
+#import "Define.h"
+
+#endif
+
+#endif /* BrokenLineHeader_pch */
