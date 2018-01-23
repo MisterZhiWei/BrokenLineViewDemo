@@ -8,6 +8,7 @@
 
 #import "ChartView_Cell.h"
 #import "BrokenLineView.h"
+
 @interface ChartView_Cell ()<BrokenLineViewDelegate>
 
 @property (nonatomic, strong) UIView    *brokenView;
@@ -30,7 +31,6 @@
 }
 
 - (void)layoutSubviews{
-
     [super layoutSubviews];
 //    self.brokenView.frame = self.contentView.bounds;
 }
@@ -39,33 +39,30 @@
     for (UIView *view in [self.brokenView subviews]) {
         [view removeFromSuperview];
     }
+    
     // 重绘要移除重赋对象
-    if (dateType == dayType) {
-        // 画 天 横坐标
+    if (dateType == dayType) {  // 画 天 横坐标
         [self DrawPointWithPointCount:7 HorizontalLables:[dataDic objectForKey:@"horizontals"]];
-    } else if (dateType == weekType){
-        // 画 周 横坐标
+    }
+    else if (dateType == weekType){ // 画 周 横坐标
         [self DrawPointWithPointCount:7 HorizontalLables:[dataDic objectForKey:@"horizontals"]];
-    } else if (dateType == monthType){
-        // 画 月 横坐标
+    }
+    else if (dateType == monthType){ // 画 月 横坐标
         [self DrawPointWithPointCount:7 HorizontalLables:[dataDic objectForKey:@"horizontals"]];
     }
     self.dateType = dateType;
     [self ShowViewWithDateType:dateType
                         Points:[dataDic objectForKey:@"points"]
                     stepCounts:[dataDic objectForKey:@"stepCounts"]];
-    
 }
 
 - (void)DrawPointWithPointCount:(NSInteger)pointCount
                HorizontalLables:(NSArray *)horizontalLables{
-    
     CGFloat margin = (self.brokenView.frame.size.width -  pointCount*32 )/(pointCount-1);
     
     // 添加横坐标轴lable
     UIView *horizonView = [[UIView alloc] init];
     horizonView.backgroundColor = [UIColor clearColor];
-    
     horizonView.frame = CGRectMake(0.0f, self.brokenView.frame.size.height-20*WIDTH_PRO, self.brokenView.frame.size.width, 40);
     
     for (int i = 0; i < horizontalLables.count; i++) {
@@ -79,7 +76,6 @@
 - (void)ShowViewWithDateType:(dateType)dateType
                       Points:(NSArray *)points
                   stepCounts:(NSArray *)stepCounts{
-    
     BrokenLineView *brokenView = [[BrokenLineView alloc] initWithFrame:CGRectMake(4.0f,3, self.brokenView.frame.size.width, 33*WIDTH_PRO*4)];
     brokenView.delegate = self;
     brokenView.backgroundColor = [UIColor clearColor];
@@ -89,7 +85,6 @@
 }
 
 - (UILabel *)drawLableWithPoint:(CGPoint)point text:(NSString *)text isVertical:(BOOL)isVertical{
-    
     CGRect frame = CGRectMake(point.x, point.y, 35, 10);
     UILabel *lab = [[UILabel alloc] init];
     lab.text = text;
@@ -103,11 +98,11 @@
 
 #pragma mark BrokenLineViewDelegate
 - (void)showStepValue:(NSString *)stepValue point:(NSString *)point{
-
     if ([self.delegate respondsToSelector:@selector(showStep:point:isMonth:)]) {
         if (self.dateType == monthType) {
             [self.delegate showStep:stepValue point:point isMonth:YES];
-        } else {
+        }
+        else {
             [self.delegate showStep:stepValue point:point isMonth:NO];
         }
         

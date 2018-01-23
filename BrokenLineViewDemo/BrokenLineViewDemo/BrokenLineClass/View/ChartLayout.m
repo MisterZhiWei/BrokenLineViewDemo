@@ -14,7 +14,6 @@
 
 @implementation ChartLayout
 
-
 - (instancetype)init
 {
     if (self = [super init]) {
@@ -29,16 +28,14 @@
  1.prepareLayout
  2.layoutAttributesForElementsInRect:方法
  */
-- (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds
-{
+- (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds{
     return YES;
 }
 
 /**
  * 用来做布局的初始化操作（不建议在init方法中进行布局的初始化操作）
  */
-- (void)prepareLayout
-{
+- (void)prepareLayout{
     [super prepareLayout];
     
     // 水平滚动
@@ -54,8 +51,7 @@
  * 这个方法的返回值是一个数组（数组里面存放着rect范围内所有元素的布局属性）
  * 这个方法的返回值决定了rect范围内所有元素的排布（frame）
  */
-- (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
-{
+- (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect{
     // 获得super已经计算好的布局属性
     NSArray *array = [super layoutAttributesForElementsInRect:rect];
     

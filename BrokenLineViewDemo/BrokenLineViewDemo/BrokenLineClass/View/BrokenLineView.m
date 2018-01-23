@@ -47,7 +47,7 @@
     // 1.获取当前上下文
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
     CGContextSaveGState(currentContext);
-    
+
     CGFloat bottomH = 200.0;
     
     if (points.count > 1) {
@@ -105,6 +105,5 @@
     point.layer.masksToBounds = YES;
     return point;
 }
-
 
 @end

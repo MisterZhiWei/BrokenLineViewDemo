@@ -10,11 +10,13 @@
 
 @protocol BrokenLineViewDelegate <NSObject>
 
+@required
 - (void)showStepValue:(NSString *)stepValue point:(NSString *)point;
 
 @end
 
 @interface BrokenLineView : UIView
+
 @property (nonatomic, strong) NSArray   *points;
 @property (nonatomic, strong) NSArray   *stepCounts;
 @property (nonatomic, assign) id <BrokenLineViewDelegate> delegate;

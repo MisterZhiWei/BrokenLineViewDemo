@@ -26,7 +26,6 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.view.backgroundColor = [UIColor blueColor];
     [self addSubViews];
-    
 }
 
 - (void)addSubViews{
@@ -36,7 +35,6 @@
     
     self.dateType = monthType;
     NSArray *dataAry = [DataModel getMonthData];
-    
     [chartView setDateType:self.dateType dataAry:dataAry];
     
     NSArray *verticals = [dataAry[0] objectForKey:@"verticals"];
@@ -48,41 +46,36 @@
     [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.view addSubview:btn];
     [btn addTarget:self action:@selector(changeBtnClicked) forControlEvents:UIControlEventTouchUpInside];
-    
 }
 
 - (void)changeBtnClicked{
     if (self.dateType == monthType) {
         self.dateType = weekType;
         NSArray *dataAry = [DataModel getWeekData];
-        
         [chartView setDateType:self.dateType dataAry:dataAry];
         
         NSArray *verticals = [dataAry[0] objectForKey:@"verticals"];
         [chartView setVerticalLables:verticals];
-
-        
-    } else {
+    }
+    else {
         self.dateType = monthType;
         NSArray *dataAry = [DataModel getMonthData];
-        
         [chartView setDateType:self.dateType dataAry:dataAry];
         
         NSArray *verticals = [dataAry[0] objectForKey:@"verticals"];
         [chartView setVerticalLables:verticals];
 
     }
-    
 }
 
 #pragma mark ChartViewDelegate
 - (void)ChartViewLoadMoreData{
-
     NSDictionary *dic;
     
     if (self.dateType == weekType) {
         dic = [DataModel getMoreWeekData];
-    } else if (self.dateType == monthType){
+    }
+    else if (self.dateType == monthType){
         dic = [DataModel getMoreMonthData];
     }
     
@@ -90,11 +83,9 @@
     
     NSArray *verticals = [dic objectForKey:@"verticals"];
     [chartView setVerticalLables:verticals];
-    
 }
 
 - (void)scrollViewDidDragWithCurrentPage:(NSInteger)currentPage{
-
 
 }
 

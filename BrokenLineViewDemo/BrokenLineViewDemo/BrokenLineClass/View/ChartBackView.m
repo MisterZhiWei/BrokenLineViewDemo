@@ -70,7 +70,6 @@
 }
 
 - (void)setDateType:(dateType)dateType dataAry:(NSArray *)dataAry{
-
     [self clearShowLab];
     self.dateType = dateType;
     
@@ -86,7 +85,6 @@
         CGFloat H = self.frame.size.height;
         CGFloat w = W-80*WIDTH_PRO;
         CGFloat h = H-40*WIDTH_PRO;
-        
         CGRect tableView_frame = CGRectMake(50*WIDTH_PRO,10*WIDTH_PRO+5,w ,h);
         
         ChartLayout *layout = [[ChartLayout alloc] init];
@@ -106,11 +104,10 @@
         self.collectionView.showsHorizontalScrollIndicator = NO;
         [self addSubview:self.collectionView];
     }
-    
 }
 
-#pragma mark - UICollectionViewDelegate
-#pragma mark - UICollectionViewDataSource
+
+#pragma mark - UICollectionViewDataSource UICollectionViewDelegate
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
@@ -132,6 +129,8 @@
  
     return cell;
 }
+
+#pragma mark -
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     [self clearShowLab];
@@ -165,13 +164,15 @@
     }
 }
 
+#pragma mark -
+
 // 纵坐标设置
 - (void)setVerticalLables:(NSArray *)verticalLables{
-
     if (verticalLables.count > 0) {
         if (self.verticalBackView) {
             [self.verticalBackView removeFromSuperview];
         }
+        
         self.verticalBackView = [[UIView alloc] initWithFrame:CGRectMake(5, 2+10*WIDTH_PRO, 30, 30-2.5+[verticalLables count]*40 - 5)];
         
         // 添加纵坐标轴lable
@@ -180,12 +181,14 @@
             lab.tag = i+Labtag;
             [self.verticalBackView addSubview:lab];
         }
+        
         [self addSubview:self.verticalBackView];
     }
 }
 
-- (UILabel *)drawLableWithPoint:(CGPoint)point text:(NSString *)text isVertical:(BOOL)isVertical{
-
+- (UILabel *)drawLableWithPoint:(CGPoint)point
+                           text:(NSString *)text
+                     isVertical:(BOOL)isVertical{
     CGRect frame = CGRectMake(point.x, point.y, 50, 10);
     UILabel *lab = [[UILabel alloc] init];
     lab.text = text;
@@ -198,7 +201,6 @@
 }
 
 - (UIView *)makePointX:(CGFloat)x Y:(CGFloat)y{
-    
     UIView *point = [[UIView alloc] initWithFrame:CGRectMake(x, y, 4, 4)];
     point.backgroundColor = [UIColor whiteColor];
     point.layer.cornerRadius = 2;
@@ -250,7 +252,6 @@
 }
 
 - (void)makeDottedLineFromePoint:(CGPoint)starPoint toPoint:(CGPoint)endPoint{
-    
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     [shapeLayer setBounds:self.bounds];
     [shapeLayer setPosition:self.center];
@@ -278,7 +279,8 @@
     // 添加虚线到视图
     if (self.lastShapeLayer) { 
         [self.layer replaceSublayer:self.lastShapeLayer with:shapeLayer];
-    } else {
+    }
+    else {
         [self.layer addSublayer:shapeLayer];
     }
     self.lastShapeLayer = shapeLayer;
@@ -291,7 +293,6 @@
                                    selector:@selector(circleAnimation)
                                    userInfo:nil
                                     repeats:YES];
-    
 }
 
 - (void)circleAnimation{
@@ -310,13 +311,11 @@
 
 // 移除虚线和显示数字
 - (void)replaceLastShapeLayerWithClearLayer{
-    
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     shapeLayer = self.lastShapeLayer;
     // 设置虚线颜色
     [shapeLayer setStrokeColor:[[UIColor clearColor] CGColor]];
     [self.layer replaceSublayer:self.lastShapeLayer with:shapeLayer];
-    
 }
 
 - (void)clearChartView{

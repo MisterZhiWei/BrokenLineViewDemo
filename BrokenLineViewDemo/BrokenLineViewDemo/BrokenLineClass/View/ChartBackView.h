@@ -10,11 +10,11 @@
 
 @protocol ChartBackViewDelegate <NSObject>
 
+@required
 - (void)ChartViewLoadMoreData;
 - (void)scrollViewDidDragWithCurrentPage:(NSInteger)currentPage;
 
 @end
-
 
 @interface ChartBackView : UIView
 
@@ -27,9 +27,7 @@
 
 - (void)setDateType:(dateType)dateType dataAry:(NSArray *)dataAry;
 - (void)setVerticalLables:(NSArray *)verticalLables;
-// 加载更多数据
 - (void)loadMoreDataWithDataDic:(NSDictionary *)dataDic;
-
 - (void)clearChartView;
 
 @end

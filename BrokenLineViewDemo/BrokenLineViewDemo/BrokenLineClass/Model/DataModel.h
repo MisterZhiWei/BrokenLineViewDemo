@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+
 @interface DataModel : NSObject
 
 + (NSArray *)getWeekData;

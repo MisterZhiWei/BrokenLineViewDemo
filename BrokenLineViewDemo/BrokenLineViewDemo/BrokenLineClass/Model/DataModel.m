@@ -34,6 +34,7 @@
     
     return ary;
 }
+
 + (NSArray *)getMonthData{
     NSString *dateStr = @"2016年6月";
     NSArray *horizontals = @[@"6.1",@"6.6",@"6.11",@"6.16",@"6.21",@"6.26",@"6.31"];
@@ -81,8 +82,6 @@
     NSArray *ary = @[dic,dic,dic];
     
     return ary;
-    
-
 }
 
 // 加载更多数据
@@ -157,4 +156,5 @@
 
     return dic;
 }
+
 @end
