@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @protocol ChartViewCellDelegate <NSObject>
+
 @required
 - (void)showStep:(NSString *)stepValue
            point:(NSString *)point
