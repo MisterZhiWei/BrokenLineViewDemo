@@ -18,11 +18,11 @@
 
 @interface ChartBackView : UIView
 
-@property (nonatomic, strong) NSArray       *firstPoints;
-@property (nonatomic, strong) NSArray       *updatePoints;
-@property (nonatomic, assign) NSInteger     pageCount;
-@property (nonatomic, strong) UIScrollView  *scrollView;
-@property (nonatomic, strong) NSArray       *stepCounts;
+@property (nonatomic, strong, readwrite) NSArray       *firstPoints;
+@property (nonatomic, strong, readwrite) NSArray       *updatePoints;
+@property (nonatomic, assign, readwrite) NSInteger     pageCount;
+@property (nonatomic, strong, readonly) UIScrollView  *scrollView;
+@property (nonatomic, strong, readwrite) NSArray       *stepCounts;
 @property (nonatomic, assign) id<ChartBackViewDelegate> delegate;
 
 - (void)setDateType:(dateType)dateType dataAry:(NSArray *)dataAry;

@@ -17,8 +17,8 @@
 
 @interface BrokenLineView : UIView
 
-@property (nonatomic, strong) NSArray   *points;
-@property (nonatomic, strong) NSArray   *stepCounts;
+@property (nonatomic, strong, readwrite) NSArray   *points;
+@property (nonatomic, strong, readwrite) NSArray   *stepCounts;
 @property (nonatomic, assign) id <BrokenLineViewDelegate> delegate;
 
 @end
